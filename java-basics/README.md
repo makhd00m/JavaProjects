@@ -78,7 +78,7 @@ Contents of `in1.txt`
 
 Contents of `in2.txt`
 ```
-1
+1 
 9
 3
 ```
