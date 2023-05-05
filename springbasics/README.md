@@ -54,4 +54,3 @@ Make a task manager with the following features:
 
 2. Bulk delete tasks which are completed to be implemented
    1. `DELETE /tasks?completed=true` should delete all completed tasks
-   2. 
