@@ -63,7 +63,7 @@ Inside the folder [/files](./files) there are 2 files
 
 The both contain some numbers (separate numbers in each line).
 
-You have to read both files, merge all the numbers into one sorted array
+You have to read both the files, merge all the numbers into one sorted array
 and then print that into a third file [out.txt](./files/out.txt)
 
 #### Example
