@@ -79,7 +79,12 @@ public class TasksController {
     ResponseEntity<String> handleTaskNotFoundException(TasksService.TaskNotFoundException e) {
         return ResponseEntity.notFound().build();
     }
+
+    @ExceptionHandler(TasksService.IllegalArgumentException.class)
+    ResponseEntity<String> handleIllegalArgumentException(TasksService.IllegalArgumentException e) {
+        return ResponseEntity.notFound().build();
+    }
     /*
-    Figure out how to habndle 2 or 3 types of exceptions in the same method @ExceptionHandler
+    Figure out how to handle 2 or 3 types of exceptions in the same method @ExceptionHandler
      */
 }

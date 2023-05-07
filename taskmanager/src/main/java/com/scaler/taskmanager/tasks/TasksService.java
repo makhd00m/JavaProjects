@@ -1,7 +1,6 @@
 package com.scaler.taskmanager.tasks;
 
 import com.scaler.taskmanager.tasks.dtos.CreateTaskDTO;
-import com.scaler.taskmanager.tasks.dtos.TaskResponseDTO;
 import com.scaler.taskmanager.tasks.dtos.UpdateTaskDTO;
 import org.springframework.stereotype.Service;
 
