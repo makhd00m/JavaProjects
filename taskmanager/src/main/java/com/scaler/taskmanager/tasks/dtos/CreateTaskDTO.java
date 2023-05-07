@@ -2,10 +2,10 @@ package com.scaler.taskmanager.tasks.dtos;
 
 import lombok.Data;
 
-import java.util.Date;
+import java.time.LocalDate;
 
 @Data
 public class CreateTaskDTO {
     String name;
-    Date dueDate;
+    LocalDate dueDate;
 }

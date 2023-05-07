@@ -4,6 +4,7 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.time.LocalDate;
 import java.util.Date;
 
 @Getter
@@ -12,7 +13,7 @@ public class Task {
     Integer id;
     String name;
     @Setter
-    Date dueDate;
+    LocalDate dueDate;
     @Setter
     Boolean completed;
 }
