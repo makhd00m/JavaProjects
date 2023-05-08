@@ -4,6 +4,7 @@ import com.scaler.taskmanager.tasks.dtos.CreateTaskDTO;
 import com.scaler.taskmanager.tasks.dtos.TaskResponseDTO;
 import com.scaler.taskmanager.tasks.dtos.UpdateTaskDTO;
 import org.springframework.http.ResponseEntity;
+import org.springframework.http.converter.HttpMessageNotReadableException;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
@@ -80,11 +81,19 @@ public class TasksController {
         return ResponseEntity.notFound().build();
     }
 
-    @ExceptionHandler(TasksService.IllegalArgumentException.class)
-    ResponseEntity<String> handleIllegalArgumentException(TasksService.IllegalArgumentException e) {
-        return ResponseEntity.notFound().build();
+    @ExceptionHandler(
+            {
+                    HttpMessageNotReadableException.class,
+                    IllegalArgumentException.class
+            }
+    )
+    ResponseEntity<String> multiExceptionHandler(Exception e) {
+        if(e instanceof HttpMessageNotReadableException) {
+            return ResponseEntity.badRequest().body("Invalid request body");
+        } else if (e instanceof IllegalArgumentException) {
+            return ResponseEntity.internalServerError().body("Illegal Argument");
+        } else {
+            return ResponseEntity.internalServerError().body("idk - something wrong happened");
+        }
     }
-    /*
-    Figure out how to handle 2 or 3 types of exceptions in the same method @ExceptionHandler
-     */
 }
