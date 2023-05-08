@@ -84,7 +84,8 @@ public class TasksController {
     @ExceptionHandler(
             {
                     HttpMessageNotReadableException.class,
-                    IllegalArgumentException.class
+                    IllegalArgumentException.class,
+                    TasksService.TaskNotFoundException.class
             }
     )
     ResponseEntity<String> multiExceptionHandler(Exception e) {
@@ -92,6 +93,8 @@ public class TasksController {
             return ResponseEntity.badRequest().body("Invalid request body");
         } else if (e instanceof IllegalArgumentException) {
             return ResponseEntity.internalServerError().body("Illegal Argument");
+        } else if (e instanceof TasksService.TaskNotFoundException) {
+            return ResponseEntity.internalServerError().body("TaskNotFound" + e.getMessage());
         } else {
             return ResponseEntity.internalServerError().body("idk - something wrong happened");
         }
