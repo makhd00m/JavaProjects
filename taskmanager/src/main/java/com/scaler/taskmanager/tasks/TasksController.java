@@ -20,7 +20,7 @@ public class TasksController {
     }
 
     @GetMapping("")
-    ResponseEntity<List<TaskResponseDTO>> getAllTasks(@RequestBody TasksService.TaskFilter filter) {
+    ResponseEntity<List<TaskResponseDTO>> getAllTasks(@RequestBody(required = false) TasksService.TaskFilter filter) {
         TasksService.TaskFilter taskFilter = TasksService.TaskFilter.fromQueryParams(filter.beforeDate, filter.afterDate, filter.completed);
         var tasks = tasksService.getAllTasks(filter);
 

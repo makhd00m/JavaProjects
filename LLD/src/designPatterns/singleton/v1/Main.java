@@ -1,4 +1,4 @@
-package designPatterns.singleton;
+package designPatterns.singleton.v1;
 
 public class Main {
 
