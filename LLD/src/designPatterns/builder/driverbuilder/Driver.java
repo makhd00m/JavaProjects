@@ -1,5 +1,7 @@
 package designPatterns.builder.driverbuilder;
 
+import java.security.InvalidParameterException;
+
 public class Driver {
     private String name;
     private int age;
@@ -13,18 +15,6 @@ public class Driver {
 
     public static Builder getBuilder() {
         return new Builder();
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public int getAge() {
-        return age;
-    }
-
-    public String getAddress() {
-        return address;
     }
 
     static class Builder {
@@ -48,7 +38,22 @@ public class Driver {
         }
 
         public Driver build() {
+            if(this.name.length() < 2)
+                throw new InvalidParameterException("Name can't have less than 2 characters");
+            if(this.address.length() == 0)
+                throw new InvalidParameterException("Address shouldn't be empty");
+
             return new Driver(this);
         }
+    }
+
+    public String getName() {
+        return name;
+    }
+    public int getAge() {
+        return age;
+    }
+    public String getAddress() {
+        return address;
     }
 }

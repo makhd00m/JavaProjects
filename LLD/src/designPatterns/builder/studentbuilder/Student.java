@@ -47,14 +47,14 @@ public class Student {
         public Student build() throws Exception {
 
             if(this.psp < 70)
-                throw new Exception();
+                throw new Exception("Your psp is less than 70 percent");
             if(this.yoe < 2)
-                throw new Exception();
+                throw new Exception("Your year of experience is less than 2 years");
             if(this.age < 18)
-                throw new Exception();
+                throw new Exception("You're underage");
 
-            Student s = new Student(this);
-            return s;
+            Student student = new Student(this);
+            return student;
         }
     }
 
@@ -74,7 +74,7 @@ public class Student {
         return this.age;
     }
     public static Builder builder() {
-        Builder b = new Builder();
-        return b;
+        Builder builder = new Builder();
+        return builder;
     }
 }
