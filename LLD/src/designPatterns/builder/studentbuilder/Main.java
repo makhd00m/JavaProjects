@@ -1,4 +1,4 @@
-package designPatterns.builder;
+package designPatterns.builder.studentbuilder;
 
 public class Main {
     public static void main(String[] args) throws Exception {
