@@ -2,6 +2,11 @@ package designPatterns.builder.driverbuilder;
 
 import java.security.InvalidParameterException;
 
+/**
+ * Use Builder pattern
+ * when it is required to create complex object
+ * when telescoping constructors are present
+ */
 public class Driver {
     private String name;
     private int age;
@@ -13,6 +18,7 @@ public class Driver {
         this.address = builder.address;
     }
 
+    // return builder object which takes care of validation and main object creation
     public static Builder getBuilder() {
         return new Builder();
     }
@@ -24,6 +30,7 @@ public class Driver {
 
         public Builder setName(String name) {
             this.name = name;
+            // method chaining
             return this;
         }
 
@@ -38,11 +45,14 @@ public class Driver {
         }
 
         public Driver build() {
+
+            // validations
             if(this.name.length() < 2)
                 throw new InvalidParameterException("Name can't have less than 2 characters");
             if(this.address.length() == 0)
                 throw new InvalidParameterException("Address shouldn't be empty");
 
+            // create and return object
             return new Driver(this);
         }
     }
