@@ -11,7 +11,7 @@ public class Singleton {
 
         if (instance == null) {
             // use synchronized block only, when instance is null
-            synchronized (instance) {
+            synchronized (Singleton.class) {
                 // use double check locking to handle concurrency
                 if (instance == null) {
                     instance = new Singleton();
